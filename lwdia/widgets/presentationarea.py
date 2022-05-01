@@ -24,6 +24,9 @@ from lwdia.widgets.areabase import AreaBase
 class PresentationArea(AreaBase):
     def __init__(self, win, width=None):
         super().__init__(win, width)
+        self.x0 = 2*self._width
+        self.x1 = 3*self._width
 
     def place(self):
+        super().place()
         pass

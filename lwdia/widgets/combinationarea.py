@@ -24,8 +24,10 @@ from lwdia.widgets.areabase import AreaBase
 class CombinationArea(AreaBase):
     def __init__(self, win, width=None):
         super().__init__(win, width)
+        self.x0 = self._width
+        self.x1 = 2*self._width
 
     def place(self):
-        self.separator.place(
-            x=2 * self.win.get_w_width(of=3), y=0, relwidth=0.2, relheight=1
-        )
+
+        super().place()
+        

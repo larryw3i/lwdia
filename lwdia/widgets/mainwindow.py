@@ -14,6 +14,8 @@ from lwdia.widgets.widgetarea import WidgetArea
 from lwdia.widgets.combinationarea import CombinationArea
 from lwdia.widgets.presentationarea import PresentationArea
 from lwdia.settings import *
+from lwdia.widgets.scrollbar import get_default_scrollbar
+
 
 class MainWindow:
     def __init__(self):
@@ -23,12 +25,12 @@ class MainWindow:
         self.scr_widthof2 = int(self.scr_width / 2)
         self.scr_widthof6 = int(self.scr_width / 6)
         self.scr_heightof2 = int(self.scr_height / 2)
+        self._width = 0
+        self._height = 0
         self.canvas = tk.Canvas(self.root)
         self.widgetarea = WidgetArea(self)
         self.combinationarea = CombinationArea(self)
         self.presentationarea = PresentationArea(self)
-        self._width = 0
-        self._height = 0
 
     def get_w_width(self, of=1):
         return int(self.root.winfo_width() / of)
