@@ -53,8 +53,7 @@ class AreaBase:
 
     def get_height(self):
         return self._height
-    
-    
+
     def get_x0(self):
         return self.x0
 
@@ -63,14 +62,12 @@ class AreaBase:
 
     def place(self):
         self._scrollbar.place(
-            x=self.get_x1()-self.get_scrollbar_width(),
+            x=self.get_x1() - self.get_scrollbar_width(),
             y=0,
             relheight=1,
         )
 
-        self.separator.place(
-            x=self.get_x1(), y=0, relwidth=0.2, relheight=1
-        )
+        self.separator.place(x=self.get_x1(), y=0, relwidth=0.2, relheight=1)
 
     def config(self):
         self.place()

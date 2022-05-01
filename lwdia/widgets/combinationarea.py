@@ -25,9 +25,8 @@ class CombinationArea(AreaBase):
     def __init__(self, win, width=None):
         super().__init__(win, width)
         self.x0 = self._width
-        self.x1 = 2*self._width
+        self.x1 = 2 * self._width
 
     def place(self):
 
         super().place()
-        

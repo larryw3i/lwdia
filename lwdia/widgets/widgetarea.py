@@ -26,7 +26,7 @@ class WidgetArea(AreaBase):
         super().__init__(win, width)
         self.x0 = 0
         self.x1 = self._width
-    
+
     def place(self):
         super().place()
 
