@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 21:49+0800\n"
-"PO-Revision-Date: 2022-04-04 21:49+0800\n"
+"POT-Creation-Date: 2022-05-01 20:40+0800\n"
+"PO-Revision-Date: 2022-05-01 20:42+0800\n"
 "Last-Translator: larry <larryw3i@163.com>\n"
 "Language-Team: Chinese (Simplified) <larryw3i@163.com>\n"
 "Language: zh_CHS\n"
@@ -1109,3 +1109,7 @@ msgstr "进入游戏后，按Esc返回。"
 #: primaryschool/ready/__init__.py:257
 msgid "After starting the game, press ESC to return."
 msgstr "进入游戏后，按Esc返回。"
+
+#: lwdia/widgets/mainwindow.py:59
+msgid "lwdia"
+msgstr "lwdia程序图"
