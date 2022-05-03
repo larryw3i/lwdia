@@ -13,7 +13,7 @@ from tkinter import ttk
 
 from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
-from lwdia.widgets.common import get_default_text_menu
+from lwdia.widgets.common import get_default_text, get_default_text_menu
 
 
 class ExampleType(Enum):
@@ -49,7 +49,9 @@ class ExampleArea(AreaBase):
         pass
 
     def add_widgets(self):
-        self.example_text = tk.Text(self.root)
+        self.example_text = get_default_text(self.root)
+        self.example_text.insert(1.0, "asfhkajsfa\nhslkajkffhjklafLFJKL")
+        self.example_text.configure(state="disabled")
         self.example_text_sbar = ttk.Scrollbar(self.root)
         self.example_text_menu = get_default_text_menu(
             self.root, self.example_text

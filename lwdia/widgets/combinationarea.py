@@ -12,7 +12,7 @@ from tkinter import ttk
 
 from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
-from lwdia.widgets.common import get_default_text_menu
+from lwdia.widgets.common import get_default_text, get_default_text_menu
 
 
 class CombinationArea(AreaBase):
@@ -21,8 +21,15 @@ class CombinationArea(AreaBase):
         self.x0 = self._width
         self.x1 = 2 * self._width
 
+    def combination_text_bind_tab(self, event):
+        self.combination_text.insert(
+            self.combination_text.index(tk.INSERT), 4 * " "
+        )
+        return "break"
+
     def add_widgets(self):
-        self.combination_text = tk.Text(self.root)
+        self.combination_text = get_default_text(self.root)
+        self.combination_text.bind("<Tab>", self.combination_text_bind_tab)
         self.combination_text_menu = get_default_text_menu(
             self.root, self.combination_text
         )

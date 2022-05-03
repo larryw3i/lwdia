@@ -15,6 +15,18 @@ from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
 
 
+def get_default_text(
+    root,
+    state="normal",
+):
+    _text = tk.Text(
+        root,
+        state=state,
+        tabs="4c",
+    )
+    return _text
+
+
 def get_default_text_menu(root, text_w):
     _menu = tk.Menu(
         root,
@@ -33,4 +45,5 @@ def get_default_text_menu(root, text_w):
     _menu.add_command(
         label=_("Paste"), command=lambda: text_w.event_generate("<<Paste>>")
     )
+    _menu.add_command(label=_(" "))
     return _menu
