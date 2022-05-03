@@ -37,8 +37,8 @@ class ExampleArea(AreaBase):
         self.x0 = None
         self.x1 = None
         self.example_btns = []
-        self.example_text=None
-        self.example_text_sbar=None
+        self.example_text = None
+        self.example_text_sbar = None
         self.content_height = 0
 
     def get_content_height(self, height=0):
@@ -48,8 +48,8 @@ class ExampleArea(AreaBase):
         pass
 
     def add_widgets(self):
-        self.example_text = tk.Text(self.root,exportselection=True)
-        self.example_text_sbar=ttk.Scrollbar(self.root)
+        self.example_text = tk.Text(self.root, exportselection=True)
+        self.example_text_sbar = ttk.Scrollbar(self.root)
         self.example_btns = [
             ttk.Button(
                 self.root,
@@ -144,18 +144,19 @@ class ExampleArea(AreaBase):
                 btn_x = 0
                 btn_y += btn_height
                 btn.place(x=btn_x, y=btn_y)
-                all_btn_height = btn_y+btn_height
+                all_btn_height = btn_y + btn_height
             btn_x += btn_width
 
         self.example_text.place(
             x=0,
             y=all_btn_height,
             width=self.get_width_without_scrollbar(),
-            height=self.win.get_height()-all_btn_height,
+            height=self.win.get_height() - all_btn_height,
         )
         self.example_text_sbar.place(
-            x=self.get_width_without_scrollbar(),y=all_btn_height,
-            height=self.win.get_height()-all_btn_height,
+            x=self.get_width_without_scrollbar(),
+            y=all_btn_height,
+            height=self.win.get_height() - all_btn_height,
         )
 
     def config(self):

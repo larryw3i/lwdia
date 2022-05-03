@@ -57,7 +57,7 @@ class AreaBase:
     def add_widgets(self):
         pass
 
-    def place(self,show_scrollbar=True):
+    def place(self, show_scrollbar=True):
         if show_scrollbar:
             self._scrollbar.place(
                 x=self.get_x1() - self.get_scrollbar_width(),
