@@ -47,9 +47,37 @@ class ExampleArea(AreaBase):
     def update_example_text(self, _type):
         pass
 
+    def example_text_cut(self):
+        self.example_text.event_generate("<<Cut>>")
+
+    def example_text_copy(self):
+        self.example_text.event_generate("<<Copy>>")
+
+    def example_text_paste(self):
+        self.example_text.event_generate("<<Paste>>")
+
     def add_widgets(self):
-        self.example_text = tk.Text(self.root, exportselection=True)
+        self.example_text = tk.Text(self.root)
         self.example_text_sbar = ttk.Scrollbar(self.root)
+        self.example_text_menu = tk.Menu(
+            self.root,
+            tearoff=False,
+        )
+        self.example_text.bind(
+            "<Button-3>",
+            lambda event: self.example_text_menu.post(
+                event.x_root, event.y_root
+            ),
+        )
+        self.example_text_menu.add_command(
+            label=_("Cut"), command=self.example_text_cut
+        )
+        self.example_text_menu.add_command(
+            label=_("Copy"), command=self.example_text_copy
+        )
+        self.example_text_menu.add_command(
+            label=_("Paste"), command=self.example_text_paste
+        )
         self.example_btns = [
             ttk.Button(
                 self.root,
