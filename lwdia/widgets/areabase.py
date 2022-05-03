@@ -42,6 +42,9 @@ class AreaBase:
     def get_width(self):
         return self.get_x1() - self.get_x0()
 
+    def get_width_without_scrollbar(self):
+        return self.get_width() - self.get_scrollbar_width()
+
     def get_height(self):
         return self._height
 
@@ -54,12 +57,13 @@ class AreaBase:
     def add_widgets(self):
         pass
 
-    def place(self):
-        self._scrollbar.place(
-            x=self.get_x1() - self.get_scrollbar_width(),
-            y=0,
-            relheight=1,
-        )
+    def place(self,show_scrollbar=True):
+        if show_scrollbar:
+            self._scrollbar.place(
+                x=self.get_x1() - self.get_scrollbar_width(),
+                y=0,
+                relheight=1,
+            )
 
     def config(self):
         self.place()

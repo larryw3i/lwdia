@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 20:40+0800\n"
+"POT-Creation-Date: 2022-05-03 17:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1100,6 +1100,58 @@ msgstr ""
 msgid "After starting the game, press ESC to return."
 msgstr ""
 
-#: lwdia/widgets/mainwindow.py:59
+#: lwdia/widgets/mainwindow.py:59 lwdia/widgets/mainwindow.py:62
 msgid "lwdia"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:48
+msgid "Event"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:53
+msgid "Control"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:58
+msgid "Action"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:63
+msgid "Look"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:68
+msgid "Sound"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:73
+msgid "Listen"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:78
+msgid "Calc"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:85
+msgid "Draw"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:90
+msgid "Variable"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:95
+msgid "Func"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:100
+msgid "Music"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:105
+msgid "Read"
+msgstr ""
+
+#: lwdia/widgets/examplearea.py:110
+msgid "Trans"
 msgstr ""

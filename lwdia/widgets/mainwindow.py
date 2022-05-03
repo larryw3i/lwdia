@@ -84,6 +84,8 @@ class MainWindow:
         self.canvas.config(
             width=self.get_w_width(), height=self.get_w_height()
         )
+        self._width=self.get_w_width()
+        self._height=self.get_w_height()
         self.examplearea.config()
         self.combinationarea.config()
         self.presentationarea.config()
