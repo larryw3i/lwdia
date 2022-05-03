@@ -21,7 +21,7 @@ class PresentationArea(AreaBase):
         self.x1 = 3 * self._width
 
     def get_x0(self):
-        return 0
+        return 2 * self.win.get_w_width(of=3)
 
     def get_x1(self):
         return 3 * self.win.get_w_width(of=3)

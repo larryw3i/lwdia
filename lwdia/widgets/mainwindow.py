@@ -13,9 +13,9 @@ from tkinter import ttk
 from lwdia.locale import _
 from lwdia.settings import *
 from lwdia.widgets.combinationarea import CombinationArea
+from lwdia.widgets.examplearea import ExampleArea
 from lwdia.widgets.presentationarea import PresentationArea
 from lwdia.widgets.scrollbar import get_default_scrollbar
-from lwdia.widgets.widgetarea import WidgetArea
 
 
 class MainWindow:
@@ -29,7 +29,7 @@ class MainWindow:
         self._width = 0
         self._height = 0
         self.canvas = tk.Canvas(self.root)
-        self.widgetarea = WidgetArea(self)
+        self.examplearea = ExampleArea(self)
         self.combinationarea = CombinationArea(self)
         self.presentationarea = PresentationArea(self)
 
@@ -84,16 +84,25 @@ class MainWindow:
         self.canvas.config(
             width=self.get_w_width(), height=self.get_w_height()
         )
-        self.widgetarea.config()
+        self.examplearea.config()
         self.combinationarea.config()
         self.presentationarea.config()
+
+    def add_widgets(self):
+        self.examplearea.add_widgets()
+        self.combinationarea.add_widgets()
+        self.presentationarea.add_widgets()
+
+    def place(self):
+        self.examplearea.place()
+        self.combinationarea.place()
+        self.presentationarea.place()
 
     def mainloop(self):
         self.set_title()
         self.set_width_height()
         self.set_geometry()
         self.set_root()
-        self.widgetarea.place()
-        self.combinationarea.place()
-        self.presentationarea.place()
+        self.add_widgets()
+        self.place()
         self.root.mainloop()
