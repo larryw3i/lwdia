@@ -2,6 +2,7 @@ import gettext
 import locale
 import os
 import sys
+
 from lwdia.settings import app_name
 
 sys_lang_code = locale.getdefaultlocale()[0]

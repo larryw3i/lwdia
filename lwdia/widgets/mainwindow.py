@@ -3,18 +3,19 @@ import os
 import pickle
 import subprocess
 import threading
+import tkinter as tk
 import webbrowser
 from functools import partial
 from itertools import zip_longest
-from lwdia.locale import _
 from tkinter import *
 from tkinter import ttk
-import tkinter as tk
-from lwdia.widgets.widgetarea import WidgetArea
+
+from lwdia.locale import _
+from lwdia.settings import *
 from lwdia.widgets.combinationarea import CombinationArea
 from lwdia.widgets.presentationarea import PresentationArea
-from lwdia.settings import *
 from lwdia.widgets.scrollbar import get_default_scrollbar
+from lwdia.widgets.widgetarea import WidgetArea
 
 
 class MainWindow:

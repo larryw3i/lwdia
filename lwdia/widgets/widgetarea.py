@@ -3,21 +3,14 @@ import os
 import pickle
 import subprocess
 import threading
+import tkinter as tk
 import webbrowser
 from functools import partial
 from itertools import zip_longest
-import importlib
-import os
-import pickle
-import subprocess
-import threading
-import webbrowser
-from functools import partial
-from itertools import zip_longest
-from lwdia.locale import _
 from tkinter import *
 from tkinter import ttk
-import tkinter as tk
+
+from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
 
 
@@ -26,10 +19,12 @@ class WidgetArea(AreaBase):
         super().__init__(win, width)
         self.x0 = 0
         self.x1 = self._width
+    
+    def get_x0(self):
+        return 0
+    
+    def get_x1(self):
+        return self.win.get_w_width(of=3)
 
     def place(self):
         super().place()
-
-        self.separator.place(
-            x=self.win.get_w_width(of=3), y=0, relwidth=0.2, relheight=1
-        )

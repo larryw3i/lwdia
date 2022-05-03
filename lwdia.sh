@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
-_args=("$@") # All parameters from terminal.
-
 app_name='lwdia'
 bin_dir='venv/local/bin'
+local_dir="${app_name}/locale"
+pot_path="${local_dir}/${app_name}.pot"
 
 update_gitignore(){
     git rm -r --cached . && git add .
@@ -13,16 +13,16 @@ update_gitignore(){
 }
 
 _xgettext(){
-    xgettext -v -j -L Python --output=${app_name}/locale/${app_name}.pot \
+    xgettext -v -j -L Python --output=${pot_path} \
     $(find ${app_name}/ -name "*.py")
 
-    for _po in $(find ${app_name}/locale/ -name "*.po"); do
-        msgmerge -U -v $_po ${app_name}/locale/${app_name}.pot
+    for _po in $(find ${local_dir}/ -name "*.po"); do
+        msgmerge -U -v $_po ${pot_path}
     done
 }
 
 _msgfmt(){
-    for _po in $(find ${app_name}/locale -name "*.po"); do
+    for _po in $(find ${local_dir} -name "*.po"); do
         echo -e "$_po --> ${_po/.po/.mo}"
         msgfmt -v -o ${_po/.po/.mo} $_po
     done
@@ -38,6 +38,10 @@ p8(){
 }
 
 _black(){
+
+    isort ${app_name}/
+    isort ${app_name}.py
+    isort setup.py
     python3 -m black -l 79 ${app_name}/;
     python3 -m black -l 79 ${app_name}.py;
     python3 -m black -l 79 setup.py;
@@ -75,7 +79,7 @@ _i_test(){
 }
 
 _start(){
-    [[ -f "${app_name}/locale/en_US/LC_MESSAGES/${app_name}.mo" ]] || _msgfmt
+    [[ -f "${local_dir}/en_US/LC_MESSAGES/${app_name}.mo" ]] || _msgfmt
     ${bin_dir}/python3 ${app_name}.py
 }
 
@@ -125,4 +129,4 @@ bdeb(){     bdist_deb;          }
 wcl(){      _cat_ | wc -l;      }
 blk(){      _black;              }
 
-${_args[0]}
+$1

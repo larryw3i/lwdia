@@ -3,22 +3,14 @@ import os
 import pickle
 import subprocess
 import threading
+import tkinter as tk
 import webbrowser
 from functools import partial
 from itertools import zip_longest
-import importlib
-import os
-import pickle
-import subprocess
-import threading
-import webbrowser
-from functools import partial
-from itertools import zip_longest
-from lwdia.locale import _
 from tkinter import *
 from tkinter import ttk
-import tkinter as tk
 
+from lwdia.locale import _
 from lwdia.widgets.scrollbar import get_default_scrollbar
 
 
@@ -31,7 +23,6 @@ class AreaBase:
         self._scrollbar = None
         self.x0 = 0
         self.x1 = 0
-        self.separator = ttk.Separator(self.root, orient=VERTICAL)
 
         if set_widgets:
             self.set_widgets()
@@ -66,8 +57,6 @@ class AreaBase:
             y=0,
             relheight=1,
         )
-
-        self.separator.place(x=self.get_x1(), y=0, relwidth=0.2, relheight=1)
 
     def config(self):
         self.place()

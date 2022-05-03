@@ -3,21 +3,14 @@ import os
 import pickle
 import subprocess
 import threading
+import tkinter as tk
 import webbrowser
 from functools import partial
 from itertools import zip_longest
-import importlib
-import os
-import pickle
-import subprocess
-import threading
-import webbrowser
-from functools import partial
-from itertools import zip_longest
-from lwdia.locale import _
 from tkinter import *
 from tkinter import ttk
-import tkinter as tk
+
+from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
 
 
@@ -27,6 +20,11 @@ class CombinationArea(AreaBase):
         self.x0 = self._width
         self.x1 = 2 * self._width
 
-    def place(self):
+    def get_x0(self):
+        return 0
+    
+    def get_x1(self):
+        return 2*self.win.get_w_width(of=3)
 
+    def place(self):
         super().place()
