@@ -79,6 +79,7 @@ _i_test(){
 }
 
 _start(){
+    _black
     [[ -f "${local_dir}/en_US/LC_MESSAGES/${app_name}.mo" ]] || _msgfmt
     ${bin_dir}/python3 ${app_name}.py
 }

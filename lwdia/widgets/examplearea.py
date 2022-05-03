@@ -13,6 +13,7 @@ from tkinter import ttk
 
 from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
+from lwdia.widgets.common import get_default_text_menu
 
 
 class ExampleType(Enum):
@@ -47,37 +48,13 @@ class ExampleArea(AreaBase):
     def update_example_text(self, _type):
         pass
 
-    def example_text_cut(self):
-        self.example_text.event_generate("<<Cut>>")
-
-    def example_text_copy(self):
-        self.example_text.event_generate("<<Copy>>")
-
-    def example_text_paste(self):
-        self.example_text.event_generate("<<Paste>>")
-
     def add_widgets(self):
         self.example_text = tk.Text(self.root)
         self.example_text_sbar = ttk.Scrollbar(self.root)
-        self.example_text_menu = tk.Menu(
-            self.root,
-            tearoff=False,
+        self.example_text_menu = get_default_text_menu(
+            self.root, self.example_text
         )
-        self.example_text.bind(
-            "<Button-3>",
-            lambda event: self.example_text_menu.post(
-                event.x_root, event.y_root
-            ),
-        )
-        self.example_text_menu.add_command(
-            label=_("Cut"), command=self.example_text_cut
-        )
-        self.example_text_menu.add_command(
-            label=_("Copy"), command=self.example_text_copy
-        )
-        self.example_text_menu.add_command(
-            label=_("Paste"), command=self.example_text_paste
-        )
+
         self.example_btns = [
             ttk.Button(
                 self.root,
@@ -175,15 +152,16 @@ class ExampleArea(AreaBase):
                 all_btn_height = btn_y + btn_height
             btn_x += btn_width
 
+        self.example_text_sbar.place(
+            x=self.get_width() - self.example_text_sbar.winfo_width(),
+            y=all_btn_height,
+            height=self.win.get_height() - all_btn_height,
+        )
+
         self.example_text.place(
             x=0,
             y=all_btn_height,
-            width=self.get_width_without_scrollbar(),
-            height=self.win.get_height() - all_btn_height,
-        )
-        self.example_text_sbar.place(
-            x=self.get_width_without_scrollbar(),
-            y=all_btn_height,
+            width=self.get_width() - self.example_text_sbar.winfo_width(),
             height=self.win.get_height() - all_btn_height,
         )
 
