@@ -19,10 +19,10 @@ class WidgetArea(AreaBase):
         super().__init__(win, width)
         self.x0 = 0
         self.x1 = self._width
-    
+
     def get_x0(self):
         return 0
-    
+
     def get_x1(self):
         return self.win.get_w_width(of=3)
 

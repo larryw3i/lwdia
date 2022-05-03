@@ -22,9 +22,9 @@ class CombinationArea(AreaBase):
 
     def get_x0(self):
         return 0
-    
+
     def get_x1(self):
-        return 2*self.win.get_w_width(of=3)
+        return 2 * self.win.get_w_width(of=3)
 
     def place(self):
         super().place()
