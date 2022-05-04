@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-03 17:46+0800\n"
-"PO-Revision-Date: 2022-05-03 17:48+0800\n"
+"POT-Creation-Date: 2022-05-04 19:22+0800\n"
+"PO-Revision-Date: 2022-05-04 19:22+0800\n"
 "Last-Translator: larry <larryw3i@163.com>\n"
 "Language-Team: Chinese (Simplified) <larryw3i@163.com>\n"
 "Language: zh_CHS\n"
@@ -1114,54 +1114,78 @@ msgstr "进入游戏后，按Esc返回。"
 msgid "lwdia"
 msgstr "lwdia程序图"
 
-#: lwdia/widgets/examplearea.py:48
+#: lwdia/widgets/examplearea.py:48 lwdia/widgets/examplearea.py:61
 msgid "Event"
 msgstr "事件"
 
-#: lwdia/widgets/examplearea.py:53
+#: lwdia/widgets/examplearea.py:53 lwdia/widgets/examplearea.py:66
 msgid "Control"
 msgstr "控制"
 
-#: lwdia/widgets/examplearea.py:58
+#: lwdia/widgets/examplearea.py:58 lwdia/widgets/examplearea.py:71
 msgid "Action"
 msgstr "行为"
 
-#: lwdia/widgets/examplearea.py:63
+#: lwdia/widgets/examplearea.py:63 lwdia/widgets/examplearea.py:76
 msgid "Look"
 msgstr "外观"
 
-#: lwdia/widgets/examplearea.py:68
+#: lwdia/widgets/examplearea.py:68 lwdia/widgets/examplearea.py:81
 msgid "Sound"
 msgstr "声音"
 
-#: lwdia/widgets/examplearea.py:73
+#: lwdia/widgets/examplearea.py:73 lwdia/widgets/examplearea.py:86
 msgid "Listen"
 msgstr "监听"
 
-#: lwdia/widgets/examplearea.py:78
+#: lwdia/widgets/examplearea.py:78 lwdia/widgets/examplearea.py:91
 msgid "Calc"
 msgstr "计算"
 
-#: lwdia/widgets/examplearea.py:85
+#: lwdia/widgets/examplearea.py:85 lwdia/widgets/examplearea.py:98
 msgid "Draw"
 msgstr "描绘"
 
-#: lwdia/widgets/examplearea.py:90
+#: lwdia/widgets/examplearea.py:90 lwdia/widgets/examplearea.py:103
 msgid "Variable"
 msgstr "变量"
 
-#: lwdia/widgets/examplearea.py:95
+#: lwdia/widgets/examplearea.py:95 lwdia/widgets/examplearea.py:108
 msgid "Func"
 msgstr "函数"
 
-#: lwdia/widgets/examplearea.py:100
+#: lwdia/widgets/examplearea.py:100 lwdia/widgets/examplearea.py:113
 msgid "Music"
 msgstr "音乐"
 
-#: lwdia/widgets/examplearea.py:105
+#: lwdia/widgets/examplearea.py:105 lwdia/widgets/examplearea.py:118
 msgid "Read"
 msgstr "阅读"
 
-#: lwdia/widgets/examplearea.py:110
+#: lwdia/widgets/examplearea.py:110 lwdia/widgets/examplearea.py:123
 msgid "Trans"
 msgstr "翻译"
+
+#: lwdia/widgets/combinationarea.py:32
+msgid "Run"
+msgstr "运行"
+
+#: lwdia/widgets/combinationarea.py:33
+msgid "Refresh"
+msgstr "刷新"
+
+#: lwdia/widgets/common.py:40
+msgid "Cut"
+msgstr "剪切"
+
+#: lwdia/widgets/common.py:43
+msgid "Copy"
+msgstr "复制"
+
+#: lwdia/widgets/common.py:46
+msgid "Paste"
+msgstr "粘贴"
+
+#: lwdia/widgets/common.py:48
+msgid " "
+msgstr ""
