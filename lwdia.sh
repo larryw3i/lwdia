@@ -86,7 +86,7 @@ _start(){
 
 active_venv(){
     [[ -f "${bin_dir}/activate" ]] || \
-    [[ -f $(which virtualenv) ]] && virtualenv --system-site-packages venv || \
+    [[ -f $(which virtualenv) ]] && virtualenv venv || \
     echo "Installing virtualenv..." && pip3 install -U virtualenv
     source ${bin_dir}/activate
 }

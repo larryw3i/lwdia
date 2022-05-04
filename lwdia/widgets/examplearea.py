@@ -37,7 +37,6 @@ class ExampleArea(AreaBase):
         super().__init__(win, width)
         self.x0 = None
         self.x1 = None
-        self.example_btns = []
         self.example_text = None
         self.example_text_sbar = None
         self.content_height = 0
@@ -52,12 +51,11 @@ class ExampleArea(AreaBase):
         self.example_text = get_default_text(self.root)
         self.example_text.insert(1.0, "asfhkajsfa\nhslkajkffhjklafLFJKL")
         self.example_text.configure(state="disabled")
-        self.example_text_sbar = ttk.Scrollbar(self.root)
         self.example_text_menu = get_default_text_menu(
             self.root, self.example_text
         )
 
-        self.example_btns = [
+        self.top_btns = [
             ttk.Button(
                 self.root,
                 text=_("Event"),
@@ -136,38 +134,15 @@ class ExampleArea(AreaBase):
         return self.win.get_w_width(of=3)
 
     def place(self):
-        super().place(show_scrollbar=False)
-        btn_x = self.get_x0()
-        btn_y = 0
-        all_btn_height = 0
-        for btn in self.example_btns:
-            btn_width = btn.winfo_width()
-            btn_height = btn.winfo_height()
-            if (self.get_width() - self.get_scrollbar_width()) > (
-                btn_x + btn_width
-            ):
-                btn.place(x=btn_x, y=btn_y)
-            else:
-                btn_x = 0
-                btn_y += btn_height
-                btn.place(x=btn_x, y=btn_y)
-                all_btn_height = btn_y + btn_height
-            btn_x += btn_width
-
-        self.example_text_sbar.place(
-            x=self.get_width() - self.example_text_sbar.winfo_width(),
-            y=all_btn_height,
-            height=self.win.get_height() - all_btn_height,
-        )
-
+        super().place()
         self.example_text.place(
             x=0,
-            y=all_btn_height,
-            width=self.get_width() - self.example_text_sbar.winfo_width(),
-            height=self.win.get_height() - all_btn_height,
+            y=self.top_btns_height,
+            width=self.get_width() - self._scrollbar.winfo_width(),
+            height=self.get_scrollbar_height(),
         )
 
     def config(self):
         super().config()
-        self.example_text.config(yscrollcommand=self.example_text_sbar.set)
-        self.example_text_sbar.config(command=self.example_text.yview)
+        self.example_text.config(yscrollcommand=self._scrollbar.set)
+        self._scrollbar.config(command=self.example_text.yview)

@@ -28,6 +28,10 @@ class CombinationArea(AreaBase):
         return "break"
 
     def add_widgets(self):
+        self.top_btns = [
+            ttk.Button(self.root, text=_("Run")),
+            ttk.Button(self.root, text=_("Refresh")),
+        ]
         self.combination_text = get_default_text(self.root)
         self.combination_text.bind("<Tab>", self.combination_text_bind_tab)
         self.combination_text_menu = get_default_text_menu(
@@ -42,12 +46,11 @@ class CombinationArea(AreaBase):
 
     def place(self):
         super().place()
-
         self.combination_text.place(
             x=self.get_x0(),
-            y=0,
+            y=self.top_btns_height,
             width=self.get_width_without_scrollbar(),
-            height=self.win.get_height(),
+            height=self.get_scrollbar_height(),
         )
 
         self.combination_text.config(yscrollcommand=self._scrollbar.set)
