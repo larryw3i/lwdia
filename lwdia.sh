@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
 app_name='lwdia'
-bin_dir='venv/local/bin'
+[[ -d "venv/local" ]] && bin_dir='venv/local/bin' || bin_dir='venv/bin'
 local_dir="${app_name}/locale"
 pot_path="${local_dir}/${app_name}.pot"
+first_mo_path="${local_dir}/en_US/LC_MESSAGES/${app_name}.mo"
 
 update_gitignore(){
     git rm -r --cached . && git add .
@@ -80,13 +81,13 @@ _i_test(){
 
 _start(){
     _black
-    [[ -f "${local_dir}/en_US/LC_MESSAGES/${app_name}.mo" ]] || _msgfmt
+    [[ -f "${first_mo_path}" ]] || _msgfmt
     ${bin_dir}/python3 ${app_name}.py
 }
 
 active_venv(){
     [[ -f "${bin_dir}/activate" ]] || \
-    [[ -f $(which virtualenv) ]] && virtualenv venv || \
+    [[ -f "$(which virtualenv)" ]] && virtualenv venv || \
     echo "Installing virtualenv..." && pip3 install -U virtualenv
     source ${bin_dir}/activate
 }

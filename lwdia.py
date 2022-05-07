@@ -3,7 +3,7 @@ import os
 import re
 import sys
 
-from primaryschool.settings import *
+from lwdia.settings import *
 
 requirements = [
     # ('requirement_name','version','project_url','License','license_url')
