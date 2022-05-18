@@ -27,6 +27,10 @@ class CombinationArea(AreaBase):
         )
         return "break"
 
+    def select_all_text(self, event):
+        self.combination_text.tag_add("sel", "1.0", "end")
+        return "break"
+
     def add_widgets(self):
         self.top_btns = [
             ttk.Button(self.root, text=_("Run")),
@@ -34,6 +38,7 @@ class CombinationArea(AreaBase):
         ]
         self.combination_text = get_default_text(self.root)
         self.combination_text.bind("<Tab>", self.combination_text_bind_tab)
+        self.combination_text.bind_all("<Control-Key-a>", self.select_all_text)
         self.combination_text_menu = get_default_text_menu(
             self.root, self.combination_text
         )
