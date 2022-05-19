@@ -15,7 +15,7 @@ from lwdia.widgets.scrollbar import get_default_scrollbar
 
 
 class AreaBase:
-    def __init__(self, win, width=None, set_widgets=True):
+    def __init__(self, win, width=None, set_widgets=True, show_separator=True):
         self.win = win
         self.root = self.win.root
         self._width = width or self.win.scr_widthof6
@@ -25,9 +25,17 @@ class AreaBase:
         self.x1 = 0
         self.top_btns = []
         self.top_btns_height = 0
+        self.show_separator = show_separator
 
         if set_widgets:
             self.set_widgets()
+        if self.show_separator:
+            self.set_separator()
+
+    def set_separator(self):
+        self.separator = ttk.Separator(
+            self.root, orient="vertical", cursor="sizing"
+        )
 
     def place_btns_top_default(self):
         btn_x = self.get_x0()
@@ -92,7 +100,7 @@ class AreaBase:
     def get_scrollbar_height(self):
         return self.get_height() - self.top_btns_height
 
-    def place(self, show_scrollbar=True):
+    def place(self, show_scrollbar=True, show_separator=True):
         if len(self.top_btns) > 0:
             self.place_btns_top_default()
         if show_scrollbar:
@@ -100,6 +108,13 @@ class AreaBase:
                 x=self.get_scrollbar_x(),
                 y=self.get_scrollbar_y(),
                 height=self.get_scrollbar_height(),
+            )
+        if show_separator:
+            self.separator.place(
+                x=self.get_scrollbar_x() + self.get_scrollbar_width(),
+                y=self.get_scrollbar_y(),
+                height=self.get_scrollbar_height(),
+                width=10,
             )
 
     def config(self):
