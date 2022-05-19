@@ -15,7 +15,16 @@ from lwdia.widgets.scrollbar import get_default_scrollbar
 
 
 class AreaBase:
-    def __init__(self, win, width=None, set_widgets=True, show_separator=True):
+    def __init__(
+        self,
+        win,
+        width=None,
+        set_widgets=True,
+        show_scrollbar=True,
+        show_separator=True,
+        scrollbar_width=12,
+        separator_width=2,
+    ):
         self.win = win
         self.root = self.win.root
         self._width = width or self.win.scr_widthof6
@@ -25,7 +34,10 @@ class AreaBase:
         self.x1 = 0
         self.top_btns = []
         self.top_btns_height = 0
+        self.show_scrollbar = show_scrollbar
         self.show_separator = show_separator
+        self.separator_width = self.show_separator and separator_width or 0
+        self.scrollbar_width = self.show_scrollbar and scrollbar_width or 0
 
         if set_widgets:
             self.set_widgets()
@@ -71,13 +83,17 @@ class AreaBase:
         self._scrollbar = get_default_scrollbar(self.root)
 
     def get_scrollbar_width(self):
-        return self._scrollbar.winfo_width()
+        return self.scrollbar_width
 
     def get_width(self):
         return self.get_x1() - self.get_x0()
 
-    def get_width_without_scrollbar(self):
-        return self.get_width() - self.get_scrollbar_width()
+    def get_rem_width(self):
+        return (
+            self.get_width()
+            - self.separator_width
+            - self.get_scrollbar_width()
+        )
 
     def get_height(self):
         return self.win.get_w_height()
@@ -92,7 +108,9 @@ class AreaBase:
         pass
 
     def get_scrollbar_x(self):
-        return self.get_x1() - self.get_scrollbar_width()
+        return (
+            self.get_x1() - self.separator_width - self.get_scrollbar_width()
+        )
 
     def get_scrollbar_y(self):
         return self.top_btns_height
@@ -100,21 +118,25 @@ class AreaBase:
     def get_scrollbar_height(self):
         return self.get_height() - self.top_btns_height
 
+    def get_separator_x(self):
+        return self.get_x1() - self.separator_width
+
     def place(self, show_scrollbar=True, show_separator=True):
         if len(self.top_btns) > 0:
             self.place_btns_top_default()
+        if show_separator:
+            self.separator.place(
+                x=self.get_separator_x(),
+                y=0,
+                height=self.get_height(),
+                width=self.separator_width,
+            )
         if show_scrollbar:
             self._scrollbar.place(
                 x=self.get_scrollbar_x(),
                 y=self.get_scrollbar_y(),
                 height=self.get_scrollbar_height(),
-            )
-        if show_separator:
-            self.separator.place(
-                x=self.get_scrollbar_x() + self.get_scrollbar_width(),
-                y=self.get_scrollbar_y(),
-                height=self.get_scrollbar_height(),
-                width=10,
+                width=self.scrollbar_width,
             )
 
     def config(self):

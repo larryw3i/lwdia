@@ -54,7 +54,7 @@ class CombinationArea(AreaBase):
         self.combination_text.place(
             x=self.get_x0(),
             y=self.top_btns_height,
-            width=self.get_width_without_scrollbar(),
+            width=self.get_rem_width(),
             height=self.get_scrollbar_height(),
         )
 

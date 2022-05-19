@@ -138,7 +138,7 @@ class ExampleArea(AreaBase):
         self.example_text.place(
             x=0,
             y=self.top_btns_height,
-            width=self.get_width() - self._scrollbar.winfo_width(),
+            width=self.get_rem_width(),
             height=self.get_scrollbar_height(),
         )
 
