@@ -34,6 +34,14 @@ requirements = [
             "MIT License",
             "https://github.com/uiri/toml/blob/master/LICENSE",
         ),
+        (
+            "python-benedict",
+            "",
+            "https://github.com/fabiocaccamo/python-benedict",
+            "MIT License",
+            "https://github.com/fabiocaccamo/python-benedict/blob/master/"
+            + "LICENSE.txt",
+        ),
     ],
 ]
 

@@ -10,6 +10,7 @@ from itertools import zip_longest
 from tkinter import *
 from tkinter import ttk
 
+from lwdia.config import *
 from lwdia.locale import _
 from lwdia.widgets.scrollbar import get_default_scrollbar
 
@@ -32,6 +33,7 @@ class AreaBase:
         self._scrollbar = None
         self.x0 = 0
         self.x1 = 0
+        self.config_x1_str = "areabase.x1"
         self.top_btns = []
         self.top_btns_height = 0
         self.show_scrollbar = show_scrollbar
@@ -48,6 +50,11 @@ class AreaBase:
         self.separator = ttk.Separator(
             self.root, orient="vertical", cursor="sizing"
         )
+        self.separator.bind("<KeyRelease>", self.separator_key_release)
+
+    def separator_key_release(self, event):
+        self.set_x1()
+        self.win.place()
 
     def place_btns_top_default(self):
         btn_x = self.get_x0()
@@ -72,6 +79,12 @@ class AreaBase:
             first_btn = self.top_btns[0]
             all_btns_height = first_btn.winfo_height()
         self.top_btns_height = all_btns_height
+
+    def set_x1(self, event=None, x1=0):
+        set_config(
+            self.config_x1_str,
+            self.root.winfo_pointerx() - self.root.winfo_rootx(),
+        )
 
     def set_widgets(self):
         self.set_scrollbar()
@@ -102,7 +115,8 @@ class AreaBase:
         return self.x0
 
     def get_x1(self):
-        return self.x1
+        x1_value = get_config(self.config_x1_str)
+        return x1_value or self.x1
 
     def add_widgets(self):
         pass
