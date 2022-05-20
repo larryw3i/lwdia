@@ -10,6 +10,7 @@ from itertools import zip_longest
 from tkinter import *
 from tkinter import ttk
 
+from lwdia.config import *
 from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
 
@@ -19,12 +20,13 @@ class PresentationArea(AreaBase):
         super().__init__(win, width)
         self.x0 = 2 * self._width
         self.x1 = 3 * self._width
+        self.config_x1_str = "widgets.presentationarea.x1"
 
     def get_x0(self):
-        return 2 * self.win.get_w_width(of=3)
+        return self.win.combinationarea.get_x1()
 
     def get_x1(self):
-        return 3 * self.win.get_w_width(of=3)
+        return super().get_x1(wof3_times=3)
 
     def place(self):
         super().place()

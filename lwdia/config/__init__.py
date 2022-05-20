@@ -20,7 +20,7 @@ def set_config(keys, value, save_now=True):  # key.key
     _app_config = app_config.to_toml()
     if save_now:
         with open(app_config_path, "w") as f:
-            f.write(toml.dumps(_app_config))
+            f.write(_app_config)
 
 
 def get_config(key):

@@ -3,7 +3,8 @@ import os
 import uuid
 
 from appdirs import AppDirs
-from primaryschool.settings import app_author, app_name, app_version
+
+from lwdia.settings import app_author, app_name, app_version
 
 _dirs = AppDirs(app_name, app_author)
 

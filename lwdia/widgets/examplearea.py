@@ -11,6 +11,7 @@ from itertools import zip_longest
 from tkinter import *
 from tkinter import ttk
 
+from lwdia.config import *
 from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
 from lwdia.widgets.common import get_default_text, get_default_text_menu
@@ -40,6 +41,7 @@ class ExampleArea(AreaBase):
         self.example_text = None
         self.example_text_sbar = None
         self.content_height = 0
+        self.config_x1_str = "widgets.examplearea.x1"
 
     def get_content_height(self, height=0):
         return self.content_height
@@ -131,7 +133,7 @@ class ExampleArea(AreaBase):
         return 0
 
     def get_x1(self):
-        return self.win.get_w_width(of=3)
+        return super().get_x1()
 
     def place(self):
         super().place()

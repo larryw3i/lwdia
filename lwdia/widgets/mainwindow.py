@@ -34,10 +34,20 @@ class MainWindow:
         self.presentationarea = PresentationArea(self)
 
     def get_w_width(self, of=1):
-        return int(self.root.winfo_width() / of)
+        _winfo_width = self.root.winfo_width()
+        return (
+            int(self.scr_width / of)
+            if _winfo_width < 2
+            else int(self.root.winfo_width() / of)
+        )
 
     def get_w_height(self, of=1):
-        return int(self.root.winfo_height() / of)
+        _winfo_height = self.root.winfo_height()
+        return (
+            int(self.scr_height / of)
+            if _winfo_height < 2
+            else int(self.root.winfo_height() / of)
+        )
 
     def get_width(self):
         return self._width

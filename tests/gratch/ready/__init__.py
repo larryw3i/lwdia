@@ -1,6 +1,6 @@
 
 import pygame
-from primaryschool.ready import PrimarySchool
+from lwdia.ready import PrimarySchool
 
 class PrimarySchoolTest(PrimarySchool):
     def __init__(self):

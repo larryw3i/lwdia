@@ -3,7 +3,7 @@
 
 def victory():
     import pygame
-    from tests.primaryschool.ready import PrimarySchoolTest
+    from tests.lwdia.ready import PrimarySchoolTest
     pygame.init()
-    PrimarySchoolTest().run()
+    lwdia().run()
     pass

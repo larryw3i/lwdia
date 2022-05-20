@@ -50,10 +50,15 @@ class AreaBase:
         self.separator = ttk.Separator(
             self.root, orient="vertical", cursor="sizing"
         )
-        self.separator.bind("<KeyRelease>", self.separator_key_release)
+        self.separator.bind("<ButtonRelease-1>", self.separator_key1_release)
+        self.separator.bind("<Button-3>", self.separator_key2_release)
 
-    def separator_key_release(self, event):
+    def separator_key1_release(self, event):
         self.set_x1()
+        self.win.place()
+
+    def separator_key2_release(self, event):
+        self.set_x1(reset=True)
         self.win.place()
 
     def place_btns_top_default(self):
@@ -80,7 +85,10 @@ class AreaBase:
             all_btns_height = first_btn.winfo_height()
         self.top_btns_height = all_btns_height
 
-    def set_x1(self, event=None, x1=0):
+    def set_x1(self, event=None, reset=False):
+        if reset:
+            set_config(self.config_x1_str, None)
+            return
         set_config(
             self.config_x1_str,
             self.root.winfo_pointerx() - self.root.winfo_rootx(),
@@ -114,9 +122,9 @@ class AreaBase:
     def get_x0(self):
         return self.x0
 
-    def get_x1(self):
+    def get_x1(self, wof3_times=1):
         x1_value = get_config(self.config_x1_str)
-        return x1_value or self.x1
+        return x1_value or wof3_times * self.win.get_w_width(of=3)
 
     def add_widgets(self):
         pass

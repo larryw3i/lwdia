@@ -10,6 +10,7 @@ from itertools import zip_longest
 from tkinter import *
 from tkinter import ttk
 
+from lwdia.config import *
 from lwdia.locale import _
 from lwdia.widgets.areabase import AreaBase
 from lwdia.widgets.common import get_default_text, get_default_text_menu
@@ -20,6 +21,7 @@ class CombinationArea(AreaBase):
         super().__init__(win, width)
         self.x0 = self._width
         self.x1 = 2 * self._width
+        self.config_x1_str = "widgets.combinationarea.x1"
 
     def combination_text_bind_tab(self, event):
         self.combination_text.insert(
@@ -44,10 +46,10 @@ class CombinationArea(AreaBase):
         )
 
     def get_x0(self):
-        return self.win.get_w_width(of=3)
+        return self.win.examplearea.get_x1()
 
     def get_x1(self):
-        return 2 * self.win.get_w_width(of=3)
+        return super().get_x1(wof3_times=2)
 
     def place(self):
         super().place()
