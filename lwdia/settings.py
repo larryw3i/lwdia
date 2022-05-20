@@ -24,8 +24,15 @@ requirements = [
             "appdirs",
             "",
             "https://github.com/ActiveState/appdirs",
-            "MIT",
+            "MIT License",
             "https://github.com/ActiveState/appdirs/blob/master/LICENSE.txt",
+        ),
+        (
+            "toml",
+            "",
+            "https://github.com/uiri/toml",
+            "MIT License",
+            "https://github.com/uiri/toml/blob/master/LICENSE",
         ),
     ],
 ]
