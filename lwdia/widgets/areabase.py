@@ -20,7 +20,7 @@ class AreaBase(ABC):
     def __init__(
         self,
         win,
-        width=None,
+        width=0,
         set_widgets=True,
         show_scrollbar=True,
         show_separator=True,
