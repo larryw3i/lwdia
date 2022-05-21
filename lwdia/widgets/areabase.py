@@ -5,6 +5,7 @@ import subprocess
 import threading
 import tkinter as tk
 import webbrowser
+from abc import ABC
 from functools import partial
 from itertools import zip_longest
 from tkinter import *
@@ -15,7 +16,7 @@ from lwdia.locale import _
 from lwdia.widgets.scrollbar import get_default_scrollbar
 
 
-class AreaBase:
+class AreaBase(ABC):
     def __init__(
         self,
         win,
@@ -24,7 +25,7 @@ class AreaBase:
         show_scrollbar=True,
         show_separator=True,
         scrollbar_width=12,
-        separator_width=2,
+        separator_width=5,
     ):
         self.win = win
         self.root = self.win.root
@@ -35,6 +36,7 @@ class AreaBase:
         self.x1 = 0
         self.config_x1_str = "areabase.x1"
         self.top_btns = []
+        self.min_width = 20
         self.top_btns_height = 0
         self.show_scrollbar = show_scrollbar
         self.show_separator = show_separator
@@ -46,18 +48,21 @@ class AreaBase:
         if self.show_separator:
             self.set_separator()
 
+    def set_min_width(self, value):
+        self.min_width = value
+
     def set_separator(self):
         self.separator = ttk.Separator(
             self.root, orient="vertical", cursor="sizing"
         )
         self.separator.bind("<ButtonRelease-1>", self.separator_key1_release)
-        self.separator.bind("<Button-3>", self.separator_key2_release)
+        self.separator.bind("<Button-3>", self.separator_key3_release)
 
     def separator_key1_release(self, event):
         self.set_x1()
         self.win.place()
 
-    def separator_key2_release(self, event):
+    def separator_key3_release(self, event):
         self.set_x1(reset=True)
         self.win.place()
 
@@ -89,9 +94,12 @@ class AreaBase:
         if reset:
             set_config(self.config_x1_str, None)
             return
+        _x1 = self.root.winfo_pointerx() - self.root.winfo_rootx()
+        if _x1 < self.get_x0() + self.min_width:
+            return
         set_config(
             self.config_x1_str,
-            self.root.winfo_pointerx() - self.root.winfo_rootx(),
+            _x1,
         )
 
     def set_widgets(self):
