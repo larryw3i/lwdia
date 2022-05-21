@@ -28,10 +28,15 @@ class MainWindow:
         self.scr_heightof2 = int(self.scr_height / 2)
         self._width = 0
         self._height = 0
+        self.all_menus = []
         self.canvas = tk.Canvas(self.root)
         self.examplearea = ExampleArea(self)
         self.combinationarea = CombinationArea(self)
         self.presentationarea = PresentationArea(self)
+
+    def unpost_all_menus(self):
+        for m in self.all_menus:
+            m.unpost()
 
     def get_w_width(self, of=1):
         _winfo_width = self.root.winfo_width()

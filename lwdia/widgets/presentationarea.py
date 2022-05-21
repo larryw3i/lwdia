@@ -20,7 +20,7 @@ class PresentationArea(AreaBase):
         super().__init__(win, width)
         self.x0 = 2 * self._width
         self.x1 = 3 * self._width
-        self.config_x1_str = "widgets.presentationarea.x1"
+        self.config_x1pct_str = "widgets.presentationarea.x1"
 
     def get_x0(self):
         return self.win.combinationarea.get_x1()

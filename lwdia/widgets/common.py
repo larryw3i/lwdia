@@ -46,4 +46,5 @@ def get_default_text_menu(root, text_w):
         label=_("Paste"), command=lambda: text_w.event_generate("<<Paste>>")
     )
     _menu.add_command(label=_(" "))
+    _menu.bind("<Leave>", lambda e: _menu.unpost())
     return _menu

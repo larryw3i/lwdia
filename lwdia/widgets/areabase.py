@@ -34,7 +34,7 @@ class AreaBase(ABC):
         self._scrollbar = None
         self.x0 = 0
         self.x1 = 0
-        self.config_x1_str = "areabase.x1"
+        self.config_x1pct_str = "areabase.x1"
         self.top_btns = []
         self.min_width = 20
         self.top_btns_height = 0
@@ -92,14 +92,14 @@ class AreaBase(ABC):
 
     def set_x1(self, event=None, reset=False):
         if reset:
-            set_config(self.config_x1_str, None)
+            set_config(self.config_x1pct_str, None)
             return
         _x1 = self.root.winfo_pointerx() - self.root.winfo_rootx()
         if _x1 < self.get_x0() + self.min_width:
             return
         set_config(
-            self.config_x1_str,
-            _x1,
+            self.config_x1pct_str,
+            _x1 / self.win.get_w_width(),
         )
 
     def set_widgets(self):
@@ -131,8 +131,12 @@ class AreaBase(ABC):
         return self.x0
 
     def get_x1(self, wof3_times=1):
-        x1_value = get_config(self.config_x1_str)
-        return x1_value or wof3_times * self.win.get_w_width(of=3)
+        x1_value = get_config(self.config_x1pct_str)
+        return (
+            x1_value
+            and x1_value * self.win.get_w_width()
+            or wof3_times * self.win.get_w_width(of=3)
+        )
 
     def add_widgets(self):
         pass
@@ -151,13 +155,16 @@ class AreaBase(ABC):
     def get_separator_x(self):
         return self.get_x1() - self.separator_width
 
+    def get_separator_y(self):
+        return 0
+
     def place(self, show_scrollbar=True, show_separator=True):
         if len(self.top_btns) > 0:
             self.place_btns_top_default()
         if show_separator:
             self.separator.place(
                 x=self.get_separator_x(),
-                y=0,
+                y=self.get_separator_y(),
                 height=self.get_height(),
                 width=self.separator_width,
             )

@@ -41,7 +41,7 @@ class ExampleArea(AreaBase):
         self.example_text = None
         self.example_text_sbar = None
         self.content_height = 0
-        self.config_x1_str = "widgets.examplearea.x1"
+        self.config_x1pct_str = "widgets.examplearea.x1"
 
     def get_content_height(self, height=0):
         return self.content_height
