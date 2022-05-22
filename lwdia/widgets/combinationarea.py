@@ -22,7 +22,9 @@ class CombinationArea(AreaBase):
         self.x0 = self._width
         self.x1 = 2 * self._width
         self.config_x1pct_str = "widgets.combinationarea.x1"
-        self.line_tags = []
+
+    def get_combination_text_content(self):
+        return self.combination_text.get("1.0", "end")
 
     def combination_text_bind_tab(self, event):
         self.combination_text.insert(
@@ -35,7 +37,12 @@ class CombinationArea(AreaBase):
         return "break"
 
     def combination_text_modified(self, event):
-        pass
+        print(self.combination_text.get("1.0", "end"))
+
+    def get_rem_width(self):
+        super_rem_w = super().get_rem_width()
+        _w = super_rem_w
+        return _w
 
     def add_widgets(self):
         self.top_btns = [

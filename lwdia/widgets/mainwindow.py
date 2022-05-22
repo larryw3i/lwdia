@@ -14,6 +14,7 @@ from lwdia.locale import _
 from lwdia.settings import *
 from lwdia.widgets.combinationarea import CombinationArea
 from lwdia.widgets.examplearea import ExampleArea
+from lwdia.widgets.menubar import MenuBar
 from lwdia.widgets.presentationarea import PresentationArea
 from lwdia.widgets.scrollbar import get_default_scrollbar
 
@@ -33,6 +34,7 @@ class MainWindow:
         self.examplearea = ExampleArea(self)
         self.combinationarea = CombinationArea(self)
         self.presentationarea = PresentationArea(self)
+        self.menubar = MenuBar(self)
 
     def unpost_all_menus(self):
         for m in self.all_menus:
@@ -106,6 +108,7 @@ class MainWindow:
         self.presentationarea.config()
 
     def add_widgets(self):
+        self.root.config(menu=self.menubar.menu)
         self.examplearea.add_widgets()
         self.combinationarea.add_widgets()
         self.presentationarea.add_widgets()
